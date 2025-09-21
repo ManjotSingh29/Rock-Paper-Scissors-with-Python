@@ -1,7 +1,6 @@
 #Rock Paper Scissors
 
-from tracemalloc import start
-
+import random
 
 moves = ("Rock","Paper","Scissors")
 
@@ -20,5 +19,17 @@ def start_Game():
     else:
         print("Invalid input. Please try answering in y/n.")
         start_Game()
+
+def bot():
+    """
+    Using random to generate a number between 0-2 inclusive for printing one of the moves.
+    """
+    bot_move = random.randint[0,2]
+
+def user():
+    """
+    Taking Input for Users move
+    """
+    user_Move = input(int())
 
 start_Game()
