@@ -14,48 +14,54 @@ def start_Game():
 
     if player_Ready_Status == "y":
             print("Lets get started.")
+            instrustions()
+            gameplay()
     elif player_Ready_Status =="n":
             print("Guess not...")
             exit()
     else:
         print("Invalid input. Please try answering in y/n.")
         start_Game()
-    instrustions()
+    
 
 def instrustions():
     """
     Explaining Game rules to User
     """
-    print("For Rock, input 0")
-    print("For Paper, input 1")
-    print("For Scissors, input 2")
-    print("Rock beats Scissors, Paper beats Rock , Scissors beat paper.\n Rock and Rock, Paper and Paper along with Scissors and Scissors lead to a draw")
+    print("Rock beats Scissors, Paper beats Rock , Scissors beat paper.\nRock and Rock, Paper and Paper along with Scissors and Scissors lead to a draw")
+    return 
 
 def bot():
     """
     Using random to generate a number between 0-2 inclusive for printing one of the moves.
     """
     global bot_Move
-    bot_Move = random.randint[0,2]
+    bot_Move = random.randint(0,2)
 
 def user():
     """
     Taking Input for Users move
     """
     global user_Move
-    user_Move = input(int())
-    while user_Move == (0,1,2):
-         pass
+    user_Move = int(input("Enter your move 0 for Rock, 1 for Paper, 2 for Scissors: "))
+    if user_Move in (0,1,2):
+        print(f"Player move: {moves[user_Move]}")
     else:
-         print("Invalid input. Please choose number from given options.")
-         user()
+        print("Invalid input. Please choose number from given options.")
+        user()
 
 def gameplay():
     """
     Starting the match
     """
-    user()
+    print("Enter your move:")
     bot()
+    user()
+   
+
+    #Buildup
+
+
     print("Rock")
     time.sleep(0.75)
     print("Paper")
@@ -63,8 +69,11 @@ def gameplay():
     print("Scissors")
     time.sleep(0.75)
     print("Go!!!")
-    print(f"Player move: {moves(user_Move)}")
-    print(f"Bot Move:{moves(bot_Move)}")
+
+    #Match
+
+
+    print(f"Bot Move: {moves[bot_Move]}")
     if user_Move == 0:
         if bot_Move == 0:
             print("Its a draw.")
@@ -90,6 +99,7 @@ def gameplay():
     rematch = input(str())
     if rematch == "y":
             print("Lets get started.")
+            gameplay()
     elif rematch =="n":
             print("Guess not...")
             exit()
